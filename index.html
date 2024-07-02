@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Carrito de compras Mejor</title>
+	<link rel="stylesheet" href="src/style.css">
+	<link rel="stylesheet" href="src/sweetalert2.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+	<header class="header">
+		<div class="contenedor contenedor-flex">
+			<a href="./"><h1 class="logo">Carrito De Compras</h1></a>
+			<div class="dropdown">
+				<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+				<svg class="carrito" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path opacity="0.15" d="M18.0001 14L21.0001 5H4.78577L6.07148 14H18.0001Z" fill="#000000"/>
+				<path d="M2 3H4.5L6.5 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM6.07142 14H18L21 5H4.78571M11 19C11 20.1046 10.1046 21 9 21C7.89543 21 7 20.1046 7 19C7 17.8954 7.89543 17 9 17C10.1046 17 11 17.8954 11 19Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+				 <div class="carrito-contenedor" id="carrito">
+	                    <table id="lista-carrito" class="u-full-width">
+	                        <thead>
+	                            <tr>
+	                                <th>Imagen</th>
+	                                <th>Nombre</th>
+	                                <th>Precio</th>
+	                                <th>Cantidad</th>
+	                                <th></th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                        	<!-- <tr>
+	                        		<td></td>
+
+	                        	</tr> -->
+	                        </tbody>
+
+	                    </table>
+	                    <div id="agregar-total"></div>
+	    
+	                    <div class="fondo-boton">
+	                    <a href="#" class="vaciar boton" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
+	                    </div>
+	            </div>
+			</div>
+		</div>
+	</header>
+
+	<!-- motivacion -->
+	<section class="informacion">
+		<div class="contenedor contenedor-center">
+			<h2 class="titulo_informacion">Todos los cursos al mejor precio</h2>
+			<p class="descripcion">aqui encontras los mejores cursos con los mejores maestros</p>
+		</div>
+	</section>
+
+			<!-- toda la lista de cursos -->
+	<main class="cursos contenedor" id="cursos-listado">
+		<h1 class="titulo-cursos">Cursos en linea</h1>
+		<section class="grid_cursos" id="listado-cursos">
+			<div class="card">
+				<img src="./src/imagenes/cocina.jpg" alt="imagen de cocina" class="img-curso">
+				<div class="info-cursos">
+					<h3 class="precio_cursos">Cocina</h3>
+					<p class="descripcion">descripción: <span class="texto">en Linea y en Español</span></p>
+					<div class="precio">
+						<p>precio: $<span class="borrar">35</span></p><p>$<span class="precio-original">15</span></p>
+					</div>
+					<div class="boton-flex">
+						<a href="#" class="boton-contenedor agregar_carrito" id="agregar_carrito" data-id="1">agregar al carrito</a>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<img src="./src/imagenes/child-labor-g5d6f73fba_640.jpg" alt="imagen mecanico" class="img-curso">
+				<div class="info-cursos">
+					<h3 class="precio_cursos">Mecanica</h3>
+					<p class="descripcion">descripción: <span class="texto">en Linea y en Español</span></p>
+					<div class="precio">
+						<p>precio: $<span class="borrar">35</span></p><p>$<span class="precio-original">25</span></p>
+					</div>
+					<div class="boton-flex">
+						<a href="#" class="boton-contenedor agregar_carrito" id="agregar_carrito" data-id="2">agregar al carrito</a>
+					</div>
+					
+				</div>
+			</div>
+			<div class="card">
+				<img src="./src/imagenes/guitar-gb1f74929c_1280.jpg" alt="imagen guitarra" class="img-curso">
+				<div class="info-cursos">
+					<h3 class="precio_cursos">Tocar Guitarra</h3>
+					<p class="descripcion">descripción: <span class="texto">en Linea y en Español</span></p>
+					<div class="precio">
+						<p>precio: $<span class="borrar">35</span></p><p>$<span class="precio-original">30</span></p>
+					</div>
+					<div class="boton-flex">
+						<a href="#" class="boton-contenedor agregar_carrito" id="agregar_carrito" data-id="3">agregar al carrito</a>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<img src="src/imagenes/enfermeria.jpg" alt="imagen enfermeria" class="img-curso">
+				<div class="info-cursos">
+					<h3 class="precio_cursos">Enfermeria</h3>
+					<p class="descripcion">descripción: <span class="texto">en Linea y en Español</span></p>
+					<div class="precio">
+					<p>precio: $<span class="borrar">35</span></p><p>$<span class="precio-original">22</span></p>
+					</div>
+					<div class="boton-flex">
+					<a href="#" class="boton-contenedor agregar_carrito" id="agregar_carrito" data-id="4">agregar al carrito</a>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<img src="src/imagenes/software-developer.jpg" alt="imagen software" class="img-curso">
+				<div class="info-cursos">
+					<h3 class="precio_cursos">Desarrollo Web</h3>
+					<p class="descripcion">descripción: <span class="texto">en Linea y en Español</span></p>
+					<div class="precio">
+						<p>precio: $<span class="borrar">35</span></p><p>$<span class="precio-original">14</span></p>
+					</div>
+					<div class="boton-flex">
+						<a href="#" class="boton-contenedor agregar_carrito" id="agregar_carrito" data-id="5">agregar al carrito</a>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<img src="src/imagenes/cyber-security-2851245_640.jpg" alt="imagen cyber" class="img-curso">
+				<div class="info-cursos">
+					<h3 class="precio_cursos">Ciberseguridad</h3>
+					<p class="descripcion">descripción: <span class="texto">en Linea y en Español</span></p>
+					<div class="precio">
+						<p>precio: $<span class="borrar">35</span></p><p>$<span class="precio-original">19</span></p>
+					</div>
+					<div class="boton-flex">
+						<a href="#" class="boton-contenedor agregar_carrito" id="agregar_carrito" data-id="6">agregar al carrito</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer class="footer">
+		
+	</footer>
+
+	<script src="src/script.js"></script>
+	<script src="src/sweetalert2.min.js">
+		Swal.fire("SweetAlert2 is working!");
+	</script>
+</body>
+</html>
