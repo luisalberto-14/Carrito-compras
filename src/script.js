@@ -37,11 +37,11 @@ function addEvents(){
         });
 
         // Cerrar el carrito si se hace clic fuera de él
-        document.addEventListener("click", (e) => {
-            if (!carrito.contains(e.target) && !carritoContenedor.contains(e.target)) {
-                carritoContenedor.classList.remove("mostrar");
-            }
-        });
+        // document.addEventListener("click", (e) => {
+        //     if (!carrito.contains(e.target) && !carritoContenedor.contains(e.target)) {
+        //         carritoContenedor.classList.remove("mostrar");
+        //     }
+        // });
     }
 }
 
