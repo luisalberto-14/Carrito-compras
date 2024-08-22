@@ -90,18 +90,18 @@ a{
 }
 
 
-.dropdown:hover .carrito-contenedor{
+/* .dropdown:hover .carrito-contenedor{
 	display: block;
     position: absolute;
-    right:0;
+    right:0;*/
 
     /*top:100%;*/
-    z-index: 1;
+    /* z-index: 1;
     background-color: white;
     padding: 20px;
     min-height: 400px;
     min-width: 300px;
-}
+}  */
 
 @media(min-width: 768px){
 	.dropdown:hover .carrito-contenedor{
@@ -367,4 +367,35 @@ a{
 	text-transform: capitalize;
 	color:white;
 	font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    .dropdown:hover .carrito-contenedor {
+        display: block;
+        position: absolute;
+        right: 0;
+        z-index: 1;
+        background-color: white;
+        padding: 20px;
+        min-height: 400px;
+        min-width: 300px;
+    }
+}
+
+/* Mostrar el carrito mediante clic en dispositivos móviles */
+@media (max-width: 768px) {
+    .carrito-contenedor {
+        display: none;
+		position: absolute;
+        right: 0;
+        z-index: 1;
+        background-color: white;
+        padding: 20px;
+        min-height: 400px;
+        min-width: 300px;
+    }
+
+    .carrito-contenedor.mostrar {
+        display: block;
+    }
 }

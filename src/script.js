@@ -9,7 +9,8 @@ const tbody=document.querySelector("tbody");
 const agregarTotal=document.querySelector("#agregar-total");
 const listaCarrito=document.querySelector("#lista-carrito");
 const emptyCart=document.querySelector("#vaciar-carrito");
-const footerCart=document.querySelector(".footer")
+const footerCart=document.querySelector(".footer");
+const carrito=document.querySelector(".carrito");
 
 let arrayCart=[];
 //console.log(section)
@@ -21,6 +22,27 @@ function addEvents(){
 	emptyCart.addEventListener("click",emptyCartTotal)
 	arrayCart=JSON.parse(localStorage.getItem("course")) || [];
 	addCart(arrayCart)
+
+	const carrito = document.querySelector(".carrito");
+    const carritoContenedor = document.querySelector(".carrito-contenedor");
+
+    // Detectar clic en el carrito solo para dispositivos móviles
+    if (window.innerWidth < 768) {
+        carrito.addEventListener("click", (e) => {
+			e.preventDefault();
+            carritoContenedor.classList.toggle("mostrar");
+			console.log('diste click en el carrito');
+			console.log('Clase mostrar:', carritoContenedor.classList.contains('mostrar'));
+			
+        });
+
+        // Cerrar el carrito si se hace clic fuera de él
+        document.addEventListener("click", (e) => {
+            if (!carrito.contains(e.target) && !carritoContenedor.contains(e.target)) {
+                carritoContenedor.classList.remove("mostrar");
+            }
+        });
+    }
 }
 
 
