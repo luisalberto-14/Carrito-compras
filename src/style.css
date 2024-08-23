@@ -330,7 +330,7 @@ i{
 	
 }
 .boton-contenedor .fa-cart-shopping{
-    transform: translate(-1000%,-50%);
+    transform: translate(-1100%,-50%);
     animation-delay: 200ms;
 }
 .boton-contenedor .fa-bag-shopping{
@@ -350,7 +350,7 @@ i{
 
 @keyframes cart {
     0%{
-        transform: translate(-800%,-50%);
+        transform: translate(-1100%,-50%);
     }
     30%{
         transform: translate(-50%,-50%);
@@ -359,7 +359,7 @@ i{
         transform: translate(-50%,-50%);
     }
     100%{
-        transform: translate(145px,-50%);
+        transform: translate(170px,-50%);
     }
 }
 
