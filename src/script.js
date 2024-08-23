@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded',function(){
 	addEvents();
 	footer();
+
 })
 
 //variables
@@ -11,7 +12,11 @@ const listaCarrito=document.querySelector("#lista-carrito");
 const emptyCart=document.querySelector("#vaciar-carrito");
 const footerCart=document.querySelector(".footer");
 const carrito=document.querySelector(".carrito");
-
+const btnsAgregarCarrito=document.querySelectorAll(".agregar_carrito");
+// const addToCart=document.querySelector('.add-to-cart');
+// const addedToCart=document.querySelector('.added-to-cart');
+// const cart=document.querySelector('.fa-cart-shopping');
+// const bag=document.querySelector('.fa-bag-shopping');
 let arrayCart=[];
 //console.log(section)
 
@@ -31,30 +36,51 @@ function addEvents(){
         carrito.addEventListener("click", (e) => {
 			e.preventDefault();
             carritoContenedor.classList.toggle("mostrar");
-			console.log('diste click en el carrito');
-			console.log('Clase mostrar:', carritoContenedor.classList.contains('mostrar'));
+			// console.log('diste click en el carrito');
+			// console.log('Clase mostrar:', carritoContenedor.classList.contains('mostrar'));
 			
         });
 
-        // Cerrar el carrito si se hace clic fuera de él
-        // document.addEventListener("click", (e) => {
-        //     if (!carrito.contains(e.target) && !carritoContenedor.contains(e.target)) {
-        //         carritoContenedor.classList.remove("mostrar");
-        //     }
-        // });
     }
+	btnsAgregarCarrito.forEach(boton => {
+		boton.addEventListener('click',()=>{
+		boton.disabled=true; //desabilita el botton mientras la animacion se hace
+
+		const addToCart = boton.querySelector('.add-to-cart'); //se le pone la referencia a cada boton
+		const addedToCart = boton.querySelector('.added-to-cart');
+		const cart = boton.querySelector('.fa-cart-shopping');
+		const bag = boton.querySelector('.fa-bag-shopping');
+		addedToCart.style.visibility = 'visible';
+		addToCart.classList.add('add-to-cart-animation');
+		addedToCart.classList.add('added-to-cart-animation');
+		addedToCart.style.delay='1600ms';
+		cart.style.animation='cart 2000ms ease-in-out forwards';
+		bag.style.animation='bag 2000ms 700ms ease-in-out forwards';
+
+		setTimeout(()=>{
+			addToCart.classList.remove('add-to-cart-animation');
+			addedToCart.classList.remove('added-to-cart-animation');
+			addedToCart.style.visibility = 'hidden'; 
+			// addedToCart.style.transition='1s';
+			cart.style.animation='';
+			bag.style.animation='';
+		},2000);
+
+		setTimeout(()=>{
+			boton.disabled=false; //habilita el boton de nuevo
+		},3000)
+		})
+	})
 }
-
-
 
 // funciones
 function findButtonCart(e){
 	e.preventDefault();
 	const findClassCart=e.target.classList.contains("agregar_carrito");
-
 	if (findClassCart) {
 		const reference=e.target.parentElement.parentElement.parentElement;
-		addDatesCart(reference)
+		addDatesCart(reference);
+
 	}
 	
 }
@@ -79,13 +105,52 @@ function deleteCourse(e){
 
 function emptyCartTotal(e){
 	//console.log("diste click en el carrito");
-	const isConfirm=confirm("Estas seguro que quieres vaciar el carrito");
+	Swal.fire({
+		title:"Advertencia",
+		html:"Desea eliminar este paciente",
+		icon:"warning",
+		showCancelButton:true,
+		confirmButtonColor:"rgba(30, 144, 255, 1)",
+		confirmButtonText:"Aceptar",
+		cancelButtonText:"Cancelar",
+		width:"500px",
+		//height:"500px",
+		customClass:{
+			popup:'custom-popup',
+			title:'custom-title',
+			confirmButton:'custom-button',
+			content: 'custom-content'
+		},
+	  }).then(response=>{
+		if(response.isConfirmed){
+		  //eliminarPaciente(id); //si dices aceptar entonces hace esta funcion
+		  arrayCart=[];
+		  revisarTotal(arrayCart);
+		  addCart(arrayCart)
+		  Swal.fire({
+			title:"Exito",
+			html:"Se eliminaron los objetos agregados al carrito con exito",
+			icon:"success",
+			confirmButtonColor:"rgba(30, 144, 255, 1)",
+			confirmButtonText:"OK",
+			width:"500px",
+		//height:"500px",
+			customClass:{
+			popup:'custom-popup',
+			title:'custom-title',
+			confirmButton:'custom-button',
+			content: 'custom-content'
+		},
+		  })
+		}
+	  })
+	//const isConfirm=confirm("Estas seguro que quieres vaciar el carrito");
 	//console.log(isConfirm)
-	if(isConfirm){
-		arrayCart=[];
-		revisarTotal(arrayCart);
-		addCart(arrayCart)
-	}
+	//if(isConfirm){
+	// 	arrayCart=[];
+	// 	revisarTotal(arrayCart);
+	// 	addCart(arrayCart)
+	// }
 }
 
 function addDatesCart(reference){
@@ -236,3 +301,5 @@ function limpiarHTML(){
 
 
 // <p class="precio-curso">Precio total de Los cursos:</p>
+
+/* animacion del boton*/

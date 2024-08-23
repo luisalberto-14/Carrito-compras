@@ -30,7 +30,6 @@ body{
 
 a{
 	text-decoration: none;
-	color:;
 }
 
 .header{
@@ -40,7 +39,7 @@ a{
 }
 
 .contenedor{
-	max-width: 110rem;
+	max-width: 120rem;
 	margin:0 auto;
 	width: 90%;
 }
@@ -279,19 +278,111 @@ a{
 }
 
 .boton-contenedor{
+	position:relative;
 	width: 90%;
 	background-color: var(--violeta);
+	font-size: 1.5rem;
 	margin: 2rem 0;
-	padding: 1rem 2rem;
+	padding: 2rem 2rem;
+	/* width: 50rem;
+    height: 4.5rem; */
 	text-align: center;
-	border-radius: 10px;
+	border-radius: 5px;
+	overflow: hidden;
+	
 }
-
 .agregar_carrito{
 	color: var(--blanco);
 	text-transform: uppercase;
 
 }
+.boton-contenedor span,
+.boton-contenedor i {
+    pointer-events: none; /* Los elementos internos no capturan clics para eso es y colocar para el boton y aga la animacion sin afectar nada */
+}
+i{
+    position:absolute;
+    top: 50%;
+    height: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+}
+.boton-contenedor span{
+    position:absolute;
+    top: 50%;
+    height: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    color: white;
+    transition:500ms ease-in-out transform;
+	outline: none;
+	user-select: none;
+	font-size: 2rem;
+	letter-spacing: 1px;
+	font-weight: 600;
+}
+/*=============== animacion del carrito para que se vea mejor ======================*/
+.boton-contenedor .added-to-cart{
+    transform: translate(-50%,-200%);
+	visibility: hidden;
+	opacity: 0;
+	transition: 100ms;
+	
+}
+.boton-contenedor .fa-cart-shopping{
+    transform: translate(-1000%,-50%);
+    animation-delay: 200ms;
+}
+.boton-contenedor .fa-bag-shopping{
+    transform: translate(-50%,-400%);
+    font-size: 1.2rem;
+}
+
+.boton-contenedor .add-to-cart-animation{
+    visibility: visible;
+    transform: translate(-50%,-50%) scale(0);
+}
+.boton-contenedor .added-to-cart-animation{
+    transform: translate(-50%,-50%);
+	visibility: visible;
+	transition-delay: 1700ms;
+}
+
+@keyframes cart {
+    0%{
+        transform: translate(-800%,-50%);
+    }
+    30%{
+        transform: translate(-50%,-50%);
+    }
+    70%{
+        transform: translate(-50%,-50%);
+    }
+    100%{
+        transform: translate(145px,-50%);
+    }
+}
+
+@keyframes bag{
+    0%{
+        transform: translate(-50%,-400%);
+        opacity: 0;
+    }
+    30%{
+        transform: translate(-50%,-90%);
+        opacity: 1;
+    }
+    50%{
+        transform: translate(-50%,-90%);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(-50%,-90%);
+        opacity: 0;
+    }
+}
+
+/*====================== estilos para el footer ========================0*/
 
 .footer{
 	width: 100%;
@@ -382,6 +473,26 @@ a{
     }
 }
 
+/*estilos del carrito*/
+.custom-button{
+	background:  rgba(30, 144, 255, 1) ;
+	transition:.2s ease-in
+}
+
+.custom-button:hover{
+	background-color: rgb(8, 91, 175);
+}
+
+.custom-title{
+	font-size: 3rem !important;
+}
+
+.custom-popup{
+	font-size: 1.8rem;
+	min-width: 400px;
+	width: 500px;
+}
+
 /* Mostrar el carrito mediante clic en dispositivos móviles */
 @media (max-width: 768px) {
     .carrito-contenedor {
@@ -399,3 +510,5 @@ a{
         display: block;
     }
 }
+
+/*animacion del boton del carrito*/
